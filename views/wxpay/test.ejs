@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>微信支付测试</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="http://static.5usport.com/sea.js"></script>
+<style type="text/css">
+body { background-color: #f7f7f7; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0,0,0,0); color: #555; font-family: sans-serif; padding: 15px; }
+ul, li { padding: 0; margin: 0; list-style:none; }
+p { line-height: 1.6rem; margin-bottom: 0.5rem; }
+h4 { margin: 0.5em 0; }
+.btn { display: inline-block; height: 2.8rem; line-height: 2.8rem; background-color: #f7f7f7; border: 1px solid #777; border-radius: 5px; text-align: center; text-decoration: none; color: #777; width: 95%; margin: 10px 0; }
+.btn:active { -webkit-box-shadow:inset 0 0 2px #333; }
+</style>
+<script type="text/javascript">
+seajs.use('zepto', function(zepto){
+	zepto(function($){
+		$('.btn-pay').click(function(){
+			WeixinJSBridge.invoke('getBrandWCPayRequest', <%-JSON.stringify(payargs)%>, function(res){
+				if(res.err_msg == "get_brand_wcpay_request:ok"){
+					alert("支付成功");
+					location.reload();
+					// 这里可以跳转到订单完成页面向用户展示
+				}else{
+					alert(res.err_msg);
+				}
+			});
+		});
+
+		$('.btn-buy').click(function(){
+			wx.openProductSpecificView({
+				productId: 'ptiS-uM6endKNz8a3kckOr-ffLv8', // 商品id
+				viewType: '0' // 0.默认值，普通商品详情页1.扫一扫商品详情页2.小店商品详情页
+			});
+		})
+	});
+;})
+</script>
+</head>
+<body ontouchstart="">
+<h4>微信公众号支付</h4>
+<div><a href="javascript:;" class="btn btn-pay">马上支付</a></div>
+<h4>微信小店</h4>
+<div><a href="javascript:;" class="btn btn-buy">购买商品</a></div>
+</body>
+</html>
