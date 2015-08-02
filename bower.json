@@ -1,0 +1,21 @@
+{
+  "name": "myapp",
+  "version": "0.0.0",
+  "homepage": "https://github.com/chenguiya/myapp",
+  "authors": [
+    "hua <965781546@qq.com>"
+  ],
+  "description": "bower 下载",
+  "main": "public/bower_components",
+  "keywords": [
+    "myapaa"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
