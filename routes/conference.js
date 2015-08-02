@@ -1,5 +1,4 @@
 var express = require('express');
-var mongodb = require('../lib/mongodb');
 var router = express.Router();
 
 router.get('/map', function(req, res){
